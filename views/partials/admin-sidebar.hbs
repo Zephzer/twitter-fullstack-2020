@@ -1,0 +1,23 @@
+<div class="col-3 ms-5" style="max-width: 278px;">
+    <div class="d-flex flex-column">
+        <img src="https://i.imgur.com/T5IhY8x.png" title="source: imgur.com" style="width: 50px;" class="mt-3 mb-4" />
+        <a href="/admin/tweets" style="{{#ifCond route 'Tweets'}}color:#FF6600; font-weight: 700;{{/ifCond}} text-decoration: none;">
+            <div class="d-flex mb-4">
+                <img src="{{#ifCond route 'Tweets'}}https://i.imgur.com/56xY3VM.png{{/ifCond}}https://i.imgur.com/qDyxMOX.png" title="source: imgur.com" style="width: 24px; height: 24px"
+                    class="ms-2 me-3" />
+                <h5 class="fs-5"
+                    style="{{#ifCond route 'Tweets'}}color:#FF6600; font-weight: 700;{{/ifCond}} color: #44444F; font-weight: 600;">
+                    推文清單</h5>
+            </div>
+        </a>
+        <a href="/admin/users" style="text-decoration: none;">
+            <div class="d-flex mb-4">
+                <img src="{{#ifCond route 'Users'}}{{/ifCond}} https://i.imgur.com/6P4UnEV.png" title="source: imgur.com" style="width: 24px; height: 24px"
+                    class="ms-2 me-3" />
+                <h5 class="fs-5"
+                    style="{{#ifCond route 'Users'}}color:#FF6600; font-weight: 700;{{/ifCond}} color: #44444F; font-weight: 600;">
+                    使用者資料</h5>
+            </div>
+        </a>
+    </div>
+</div>
