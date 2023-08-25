@@ -4,6 +4,7 @@ const adminController = require('../../controllers/admin-controller')
 const { generalErrorHandler } = require('../../middleware/error-handler')
 
 router.get('/tweets', adminController.getTweets)
+router.get('/users', adminController.getUsers)
 
 router.use('/', (req, res) => res.redirect('/admin/tweets'))
 router.use('/', generalErrorHandler)

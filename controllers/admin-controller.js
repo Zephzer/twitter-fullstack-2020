@@ -8,6 +8,9 @@ const adminController = {
         })
         .then(tweets => res.render('admin/tweets', tweets))
         .catch(err => next(err))
+    },
+    getUsers: (req, res, next) => {
+        res.render('admin/users')
     }
 }
 
