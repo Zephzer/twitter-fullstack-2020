@@ -17,7 +17,11 @@ const adminController = {
         .catch(err => next(err))
     },
     getUsers: (req, res, next) => {
-        res.render('admin/users')
+        const id = req.user.id
+        User.findByPk(id, {
+            raw: true,
+        })
+        .then(user => res.render('admin/users', { user }))
     }
 }
 

@@ -3,38 +3,45 @@
   <div class="row">
     {{!-- 側邊欄 --}}
     {{> admin-sidebar route='Users'}}
+    <div style="max-width: 278px;"></div>
 
-    <div class="col-6" style="max-width: 639px;">
+    <div class="col-6" style="width: 940px;">
       <nav class="navbar navbar-light border-start border-end">
         <div class="container-fluid">
           <h4 class="navbar-brand mb-0 h1 fs-4">使用者列表</h4>
         </div>
       </nav>
-      {{!-- 推文串 --}}
-      {{!-- each twitters 迴圈開始 --}}
-      <div class="border-start border-end border-bottom d-flex align-items-end flex-column pt-2"
-        style="min-height: 130px;">
-        <div class="align-self-start">
-          <img src="https://i.imgur.com/hpSLhnx.png" title="source: imgur.com" style="width: 50px;height: 50px;"
-            class="ms-4">
-          <div class="d-inline-flex pt-3">
-            <h5 class="mx-2" style="color: #171725;">Apple</h5>
-            <span style="color: #6C757D;">@apple · 3小時</span>
+      {{!-- each users 迴圈開始 --}}
+      <div class="card" style="width: 210px; height: 314px; border-radius: 10px; position:relative;">
+        <img src="{{user.cover}}" alt=""
+          style="width: 210px; height: 140px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+        <div class="content"
+          style="height: 174px; display: flex; flex-direction:column; align-items:center; justify-content: space-around; padding-top:15px;">
+          <div style="padding-top:15px;">
+            <h1 style="font-size: 16px; font-weight: 700;">John Doe</h1>
+            <h2 style="font-size: 14px; font-weight: 400;">@heyhohn</h2>
+          </div>
+          <div>
+            <div class="tweets-detail" style="width: 150px; display: flex; justify-content: space-around;">
+              <div class="tweetsCount" style="display: flex;">
+                <img src="https://i.imgur.com/Z5nbIG9.jpg" alt="" style="width: 24px; height: 24px;">
+                <h1 style="font-size: 16px; font-weight: 500;">1.5k</h1>
+              </div>
+              <div class="likesCount" style="display: flex;">
+                <img src="https://i.imgur.com/v9bj5V3.jpg" alt="" style="width: 24px; height: 24px;">
+                <h1 style="font-size: 16px; font-weight: 500;">20k</h1>
+              </div>
+            </div>
+            <div class="followship">
+              <h3 style="font-size: 14px; font-weight: 400; color: #6C757D;">
+                <span style="color: #171725;">34個</span>跟隨中
+                <span style="color: #171725;">59位</span>跟隨者
+              </h3>
+            </div>
           </div>
         </div>
-        <div class="pe-2" style="max-width: 528px">
-          <p class="ms-auto">Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-            Voluptate exercitation incididunt
-            aliquip deserunt reprehenderit elit laborum.
-          </p>
-          <div class="d-flex align-items-baseline">
-            <img src="https://i.imgur.com/AXqSL48.png" title="source: imgur.com" style="width: 16px;height: 16px;"
-              class="me-1">
-            <p class="me-5">3</p>
-            <img src="https://i.imgur.com/gdUkdVf.png" title="source: imgur.com" style="width: 16px;height: 16px;"
-              class="me-1">
-            <p>16</p>
-          </div>
+        <div style="position:absolute; top:85px; left: 58px;">
+          <img src="{{user.avatar}}" alt="" style="width: 92px; height: 92px; border-radius: 50%; border: 4px solid #FFFFFF;">
         </div>
       </div>
       {{!-- each迴圈結束 --}}
