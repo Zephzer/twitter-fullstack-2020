@@ -3,42 +3,39 @@
   <div class="row">
     {{!-- 側邊欄 --}}
     {{> admin-sidebar route='Tweets'}}
+    <div style="max-width: 278px;"></div>
 
-    <div class="col-6" style="max-width: 639px;">
+    <div class="col-6" style="width: 940px;">
       <nav class="navbar navbar-light border-start border-end">
         <div class="container-fluid">
-          <h4 class="navbar-brand mb-0 h1 fs-4">首頁</h4>
+          <h4 class="navbar-brand mb-0 h1 fs-4">推文清單</h4>
         </div>
       </nav>
       {{!-- 推文串 --}}
       {{!-- each twitters 迴圈開始 --}}
-      <div class="border-start border-end border-bottom d-flex align-items-end flex-column pt-2"
-        style="min-height: 130px;">
-        <div class="align-self-start">
-          <img src="https://i.imgur.com/hpSLhnx.png" title="source: imgur.com" style="width: 50px;height: 50px;"
-            class="ms-4">
-          <div class="d-inline-flex pt-3">
-            <h5 class="mx-2" style="color: #171725;">Apple</h5>
-            <span style="color: #6C757D;">@apple · 3小時</span>
+      <ul class="list-group">
+        {{#each tweets}}
+        <li class="list-group-item">
+          <div class="d-flex  flex-column pt-2" style="min-height: 130px;">
+            <div class="align-self-start" style="width: 910px; position: relative;">
+              <img src="{{this.User.avatar}}" title="source: imgur.com" style="width: 50px;height: 50px;" class="ms-4">
+              <div class="d-inline-flex pt-3">
+                <h5 class="mx-2" style="color: #171725;">{{this.User.name}}</h5>
+                <span style="color: #6C757D;">@{{this.User.account}} · {{relativeTimeFromNow this.createdAt}}</span>
+              </div>
+              <div class="d-inline-flex" style="position: absolute; right: 0;">
+                <form action="/admin/tweets/{{this.id}}?_method=DELETE" method="post"> <button class="btn btn-link"
+                    style=" text-decoration:none; color:#44444f;">X</button></form>
+              </div>
+            </div>
+            <div style="max-width: 855px">
+              <p style="margin-left: 85px;">{{this.description}}</p>
+            </div>
           </div>
-        </div>
-        <div class="pe-2" style="max-width: 528px">
-          <p class="ms-auto">Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-            Voluptate exercitation incididunt
-            aliquip deserunt reprehenderit elit laborum.
-          </p>
-          <div class="d-flex align-items-baseline">
-            <img src="https://i.imgur.com/AXqSL48.png" title="source: imgur.com" style="width: 16px;height: 16px;"
-              class="me-1">
-            <p class="me-5">3</p>
-            <img src="https://i.imgur.com/gdUkdVf.png" title="source: imgur.com" style="width: 16px;height: 16px;"
-              class="me-1">
-            <p>16</p>
-          </div>
-        </div>
-      </div>
+        </li>
+        {{/each}}
+      </ul>
       {{!-- each迴圈結束 --}}
     </div>
-
   </div>
 </main>

@@ -6,7 +6,14 @@ const adminController = {
             raw: true,
             nest: true
         })
-        .then(tweets => res.render('admin/tweets', tweets))
+        .then(tweets => {
+            const maxLength = 50
+            tweets = tweets.map(tweet => ({
+                ...tweet,
+                description: tweet.description.slice(0, 50)
+            }))
+            res.render('admin/tweets', { tweets })
+        })
         .catch(err => next(err))
     },
     getUsers: (req, res, next) => {
