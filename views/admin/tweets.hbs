@@ -22,9 +22,9 @@
                 <h5 class="mx-2" style="color: #171725;">{{this.User.name}}</h5>
                 <span style="color: #6C757D;">@{{this.User.account}} · {{relativeTimeFromNow this.createdAt}}</span>
               </div>
-              <div class="d-inline-flex" style="position: absolute; right: 0;">
-                <form action="/admin/tweets/{{this.id}}?_method=DELETE" method="post"> <button class="btn btn-link"
-                    style=" text-decoration:none; color:#44444f;">X</button></form>
+              <div class="d-inline-flex" style="position: absolute; right: 10px;">
+                <form action="/admin/tweets/{{this.id}}?_method=DELETE" method="post"> <button class="btn-close"
+                    style=" text-decoration:none; color:#44444f;"></button></form>
               </div>
             </div>
             <div style="max-width: 855px">
