@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const { Op } = require('sequelize');
+const { Op } = require('sequelize')
 const { User } = require('../models')
 
 const userController = {
@@ -51,6 +51,11 @@ const userController = {
   adminSignIn: (req, res) => {
     req.flash('success_messages', '成功登入！')
     res.redirect('/admin/tweets')
+  },
+  logout: (req, res) => {
+    req.flash('success_messages', '成功登出！')
+    req.logout()
+    res.redirect('/signin')
   }
 }
 

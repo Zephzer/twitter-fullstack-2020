@@ -21,8 +21,10 @@ router.post('/signup', userController.signUp)
 // 前台登入路由
 router.get('/signin', userController.signInPage)
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }), userController.signIn)
+router.get('/logout', userController.logout)
 
 // 首頁
+router.get('/tweets', authenticated, tweetController.getTweets)
 router.get('/', authenticated, tweetController.getTweets)
 
 // 錯誤處理

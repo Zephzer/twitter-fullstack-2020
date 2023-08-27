@@ -1,4 +1,4 @@
-const { Tweet, User, Like } = require('../models')
+const { Tweet, User, Like, Reply } = require('../models')
 const { Op } = require('sequelize')
 const controllerHelper = require('../helpers/controller-helpers')
 const adminController = {
@@ -25,7 +25,6 @@ const adminController = {
         }
         )
             .then(users => {
-                console.log(users)
                 return users.map(user => ({
                     ...user.toJSON(),
                     tweetsCount: controllerHelper.countTweets(user.Tweets.length),
@@ -35,10 +34,20 @@ const adminController = {
                 }))
             })
             .then(users => {
-                console.log(users)
                 res.render('admin/users', { users })
             })
             .catch(err => next(err))
+    },
+    deleteTweet: (req, res, next) => {
+        const id = req.params.id
+        Tweet.findByPk(id)
+        .then(tweet => {
+            if (!tweet) throw new Error("推文不存在")
+            return Reply.destroy({ where: { TweetId: id } })
+        })
+        .then(() => Like.destroy({ where: { TweetId: id } }))
+        .then(() => Tweet.destroy({ where: { id } }))
+        .then(() => res.redirect('/admin/tweets'))
     }
 }
 
